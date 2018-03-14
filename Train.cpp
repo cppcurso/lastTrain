@@ -30,6 +30,3 @@ void Train::go(Stop finalStop)
 	}
 	position=moveAlong(position);
 }
-
-
-
