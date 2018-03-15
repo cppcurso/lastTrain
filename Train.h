@@ -5,8 +5,6 @@
  *      Author: usuario
  */
 
-#ifndef TRAIN_H_
-#define TRAIN_H_
 #include<iostream>
 #include<thread>
 using namespace std;
@@ -24,11 +22,11 @@ public:
 
 	void go(Stop finalStop);
 	long moveAlong(float position);
-	long Train::moveAlong(float position)
+	long moveAlong(float position)
 	{
 		return position+velocity*1;
 	}
-	void Train::go(Stop finalStop)
+	void go(Stop finalStop)
 	{
 		moving=true;
 		if (position==finalStop.position)

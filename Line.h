@@ -5,7 +5,7 @@
  *      Author: usuario
  */
 
-#ifndef LINE_H_
+
 #define LINE_H_
 #include <vector>
 #include "Stop.h"
@@ -17,7 +17,15 @@ public:
 	vector<Stop>stops;
 	void addStop(string name, float position);
 	void findStop(string name);
+
+	void addStop(string name, float distance)
+	{
+		cout << "Insert name of the new stop: ";
+		cin >> stop.stopName;
+		cout << "Insert distance of the new stop: ";
+		cin >> stop.position;
+		stops.push_back(stop);
+	}
+
+
 };
-
-
-#endif /* LINE_H_ */

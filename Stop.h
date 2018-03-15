@@ -5,7 +5,7 @@
  *      Author: usuario
  */
 #include <iostream>
-#ifndef STOP_H_
+
 #define STOP_H_
 using namespace std;
 
@@ -19,5 +19,3 @@ public:
 Stop(string stopName, float position): stopName(stopName),distance(distance) {}
 
 };
-
-#endif /* STOP_H_ */
