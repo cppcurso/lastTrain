@@ -18,9 +18,9 @@ public:
 	string trainName;
 	long position;
 	Train(string trainName, float position): trainName(trainName),position(position) {}
-	Line* line1 = new Line("toMadrid");
+	Line* line1;
 	int currentStop;
-	int velocity;
+	int velocity=5;
 	bool moving=false;
 
 	bool ArrivedAtStop(int newposition)
@@ -30,8 +30,9 @@ public:
 		stop = line1->stops[i];
 		if (newposition==stop->position)
 		{
+			lock_guard<mutex> guard(stop->m);
+			i++;
 			 return true;
-			 i++;
 		 }
 		return false;
 	}
@@ -40,7 +41,6 @@ public:
 	{
 		return position+velocity*1;
 	}
-
 	void go(Stop* finalStop)
 	{
 		do{
@@ -48,10 +48,10 @@ public:
 			if (ArrivedAtStop(position))
 				{
 					for( int i=0; i<finalStop->breakTime;i++)
-					{
+						{
 						sleep(1);
 						moving=false;
-					}
+						}
 			position=moveAlong(position);
 			moving=true;
 			}

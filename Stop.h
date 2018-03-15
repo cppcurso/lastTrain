@@ -11,9 +11,9 @@ class Stop {
 
 public:
 	string stopName;
-	//mutex m;
+	mutex m;
 	float position;
-	float breakTime = 6;
+	float breakTime = 2;
 	Stop(string stopName, float position): stopName(stopName),position(position) {}
 	//mutex m;
 

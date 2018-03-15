@@ -14,15 +14,10 @@ class Line {
 public:
 	Line(string name) : lineName(name) {}
 	string lineName;
-
 	vector<Stop*>stops;
 
-	void findStop(string name);
-
-	void addStop(Stop newStop, vector <Stop> &stops)
+	void addStop(Stop* newStop)
 	{
 		 stops.push_back(newStop);
 	}
-
-
 };
