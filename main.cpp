@@ -1,19 +1,11 @@
 
 #include<iostream>
 #include<thread>
-#include"Line.cpp"
-#include"Train.cpp"
-using namespace std;
+#include"Line.h"
+#include"Train.h"
+#include"Stop.h"
 
-void checkState( Train train)
-	if (train.moving==false)
-	{
-		cout<<"Here "<<train.name<<"I'm in the km "<< train.position<<end;
-	}
-	else
-	{
-		cout<<"Here "<<train.name<<"I'm taking a break in "<<end;
-	}
+using namespace std;
 
 int main()
 {

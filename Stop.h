@@ -13,14 +13,11 @@ class Stop {
 
 public:
 	string stopName;
-	float position;
-	float breakTime = 600;
+	float distance;
+	float breakTime = 6;
 
-Stop(string stopName, float position);
-float getPosition();
-string getStopName();
-void createStopName();
-void print();
+Stop(string stopName, float position): stopName(stopName),distance(distance) {}
+
 };
 
 #endif /* STOP_H_ */

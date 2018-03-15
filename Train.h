@@ -9,7 +9,6 @@
 #define TRAIN_H_
 #include<iostream>
 #include<thread>
-#include"Stop.cpp"
 using namespace std;
 
 
@@ -17,7 +16,7 @@ class Train {
 public:
 	int currentStop;
 	string trainName;
-	long position=0;
+	long position;
 	int velocity;
 	float count;
 	bool moving=false;
@@ -25,7 +24,25 @@ public:
 
 	void go(Stop finalStop);
 	long moveAlong(float position);
+	long Train::moveAlong(float position)
+	{
+		return position+velocity*1;
+	}
+	void Train::go(Stop finalStop)
+	{
+		moving=true;
+		if (position==finalStop.position)
+		{
+			for( int i=0; i<finalStop.breakTime;i++)
+			{
+				sleep(1);
+				moving=false;
+			}
+			position=moveAlong(position);
+			moving=true;
+		}
+		position=moveAlong(position);
+	}
+
 
 };
-
-#endif /* TRAIN_H_ */
