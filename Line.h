@@ -13,18 +13,16 @@ using namespace std;
 
 class Line {
 public:
-	Line();
+	//Line();
+	string lineName;
+
 	vector<Stop>stops;
-	void addStop(string name, float position);
+
 	void findStop(string name);
 
-	void addStop(string name, float distance)
+	void addStop(Stop newStop, vector <Stop> &stops)
 	{
-		cout << "Insert name of the new stop: ";
-		cin >> stop.stopName;
-		cout << "Insert distance of the new stop: ";
-		cin >> stop.position;
-		stops.push_back(stop);
+		 stops.push_back(newStop);
 	}
 
 

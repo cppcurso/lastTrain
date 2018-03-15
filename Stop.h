@@ -5,17 +5,15 @@
  *      Author: usuario
  */
 #include <iostream>
-
-#define STOP_H_
 using namespace std;
 
 class Stop {
-
+	//Stop(string stopName, float position): stopName(stopName),distance(distance) {}
 public:
 	string stopName;
 	float distance;
 	float breakTime = 6;
 
-Stop(string stopName, float position): stopName(stopName),distance(distance) {}
+
 
 };

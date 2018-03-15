@@ -6,22 +6,21 @@
  */
 
 #include<iostream>
+#include <unistd.h>
 #include<thread>
 using namespace std;
 
 
 class Train {
 public:
+	//Train();
 	int currentStop;
 	string trainName;
 	long position;
 	int velocity;
 	float count;
 	bool moving=false;
-	Train();
 
-	void go(Stop finalStop);
-	long moveAlong(float position);
 	long moveAlong(float position)
 	{
 		return position+velocity*1;
@@ -29,7 +28,7 @@ public:
 	void go(Stop finalStop)
 	{
 		moving=true;
-		if (position==finalStop.position)
+		if (position==finalStop.distance)
 		{
 			for( int i=0; i<finalStop.breakTime;i++)
 			{
