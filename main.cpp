@@ -1,42 +1,31 @@
 
 #include <iostream>
 #include <thread>
-#include "Line.h"
 #include "Train.h"
 using namespace std;
 
-void start(Train t, Stop stop)
+void start(Train* t, Stop* stop)
 {
-    t.go(stop);
+    t->go(stop);
 }
 
 int main()
 
 {
-    Line line1;
+    Line* line1= new Line("C4");
 
-    Stop stop1;
-    stop1.stopName='A';
-    stop1.distance=10;
-
-    Stop stop2;
-    stop2.stopName='A';
-    stop2.distance=10;
-
-    Stop stop3;
-    stop2.stopName='A';
-    stop2.distance=10;
+    Stop* stop1=new Stop("A",12);
+    line1->stops.push_back(stop1);
+    Stop* stop2=new Stop("B",24);
+    line1->stops.push_back(stop1);
+    Stop* stop3=new Stop("C",36);
+    line1->stops.push_back(stop1);
 
 
-    Train train1;
-    train1.trainName="A";
-    train1.position=0;
-    train1.velocity=5;
+    Train* train1= new Train("UNO",0);
+    Train* train2= new Train("TWO",0);
 
-    Train train2;
-    train1.trainName="B";
-    train1.position=10;
-    train1.velocity=10;
+
 
 
       std::thread moveTrain1(start, train1, stop2);

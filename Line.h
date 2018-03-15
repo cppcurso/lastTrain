@@ -8,15 +8,14 @@
 
 #define LINE_H_
 #include <vector>
-#include "Stop.h"
 using namespace std;
 
 class Line {
 public:
-	//Line();
+	Line(string name) : lineName(name) {}
 	string lineName;
 
-	vector<Stop>stops;
+	vector<Stop*>stops;
 
 	void findStop(string name);
 
