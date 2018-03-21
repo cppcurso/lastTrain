@@ -1,21 +1,33 @@
 #include "NetworkManager.cpp"
+#include <thread>
 
-int main () {
+void newMessage(NetworkManager& nm, Message* message)
+{
+  message = nm.revieve();
+  std::cout << inet_ntoa(message->user.address.sin_addr)
+  << " dice " << message->text << '\n';
+
+
+}
+
+int main ()
+{
     // Inicialización
     NetworkManager nm;
     if (!nm.init()) {
         std::cout << "Error de conexión" << '\n';
         return -1;
-    }
-
-    // Recepción
-    Message* message = nm.revieve();
-    std::cout << inet_ntoa(message->user.address.sin_addr)
-    << " dice " << message->text << '\n';
+}
+    Message* message;
+    std::thread reception(newMessage, std::ref(nm), std::ref(message));
 
     // envío
+
     nm.send(message);
 
     // Finalización
+  reception.join();
     nm.end();
+
+
 }
