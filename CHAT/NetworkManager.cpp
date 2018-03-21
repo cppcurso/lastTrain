@@ -56,10 +56,12 @@ public:
         }
     }
 
-    void send(Message* message) {
-        struct sockaddr_in address = message->user.address;
-        const char* m = "hola!!!!!";
-
+    void send(Message* message)
+     {
+       char* m;
+       std::cout << "Ans:" << '\n';
+       std::cin >> m;
+      struct sockaddr_in address = message->user.address;
         sendto(sock, m, strlen(m), 0, (struct sockaddr *)&address, sizeof(address));
     }
 

@@ -3,11 +3,16 @@
 
 void newMessage(NetworkManager& nm, Message* message)
 {
+  do{
   message = nm.revieve();
   std::cout << inet_ntoa(message->user.address.sin_addr)
   << " dice " << message->text << '\n';
+ }while(true);
+}
+void sendMessage( NetworkManager nm, Message*  message)
+{
 
-
+  nm.send(message);
 }
 
 int main ()
@@ -21,13 +26,10 @@ int main ()
     Message* message;
     std::thread reception(newMessage, std::ref(nm), std::ref(message));
 
-    // envío
+    std::thread send(sendMessage, std::ref(nm),std::ref(message));
+    reception.join();
+    send.join();
 
-    nm.send(message);
 
-    // Finalización
-  reception.join();
     nm.end();
-
-
 }
